@@ -1,0 +1,23 @@
+/*
+    smarthome
+    ---------------------------
+
+    Jason Project File
+
+    This file defines the initial state of the MAS
+
+    Jason 
+    May 15, 2019 - 23:08:43
+*/
+
+MAS smarthome {
+
+    infrastructure: Centralised
+
+    environment: SmartHomeEnv.HouseEnv
+
+    agents:
+        owner;
+
+}
+
