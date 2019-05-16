@@ -48,6 +48,7 @@ public class HouseEnv extends Environment {
     }
 
     public void createPercept(String literal){
+        System.out.println("new percept: "+literal);
         addPercept(Literal.parseLiteral(literal));
     }
 }
