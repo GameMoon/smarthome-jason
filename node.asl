@@ -73,10 +73,10 @@
 										
 +extinguish[source(server)] <- ?thisPlace(WHERE);
 							   -extinguishOff[source(server)];
-							   -entered(guest);
-							   -entered(owner);
-							   -left(guest);
-							   -left(owner);
+							   -entered(guest,WHERE);
+							   -entered(owner,WHERE);
+							   -left(guest,WHERE);
+							   -left(owner,WHERE);
 							   lightsOff(WHERE);
 							   extinguish(WHERE).
 							   
