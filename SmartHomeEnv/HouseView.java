@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.FlowLayout;
 import java.util.List;
 import java.awt.Dimension;
+import java.awt.Component;
 import java.awt.event.MouseListener;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -30,9 +31,10 @@ public class HouseView extends JPanel implements MouseListener, ActionListener {
 
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.setPreferredSize(new Dimension(100,50));
+        panel.setPreferredSize(new Dimension(200,50));
 
         JComboBox roomList = new JComboBox(model.getRoomNames());
+        roomList.setMaximumSize(new Dimension(150,30));
         temp = new JCheckBox("High Temp");
         smoke = new JCheckBox("Smoke");
         

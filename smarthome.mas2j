@@ -23,7 +23,11 @@ MAS smarthome {
 
         server;
 
-        node;
+        kitchen node.asl;
+		bathroom node.asl;
+		hall node.asl;
+		livingroom node.asl;
+		bedroom node.asl;
 
 }
 
