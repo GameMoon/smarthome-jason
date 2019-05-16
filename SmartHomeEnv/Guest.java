@@ -8,4 +8,8 @@ public class Guest extends Human {
         super(posX, posY, Color.green);
     }
 
+    public String getType() {
+        return "guest";
+    }
+
 }

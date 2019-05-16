@@ -4,9 +4,6 @@ package SmartHomeEnv;
 import jason.asSyntax.*;
 import jason.environment.*;
 import java.util.logging.*;
-import jason.environment.grid.GridWorldModel;
-import jason.environment.grid.GridWorldView;
-
 
 
 public class HouseEnv extends Environment {
@@ -18,18 +15,29 @@ public class HouseEnv extends Environment {
     @Override
     public void init(String[] args) {
         super.init(args);
-        model = new HouseModel();
+        model = new HouseModel(this);
         view = new HouseView(model);
-
-        //addPercept(ASSyntax.parseLiteral("percept(demo)"));
     }
 
     @Override
     public boolean executeAction(String agName, Structure action) {
-        logger.info("executing: "+action+", but not implemented!");
-        if (true) { // you may improve this condition
-             informAgsEnvironmentChanged();
+        boolean viewUpdated = true;
+
+        if(action.getFunctor().equals("lightsOn")){
+            model.getRoom(action.getTerm(0).toString()).setLight(true);
+            
         }
+        else if(action.getFunctor().equals("lightsOff")){
+            model.getRoom(action.getTerm(0).toString()).setLight(false);
+        }
+        else{
+            viewUpdated = false;
+            logger.info("executing: " + action + ", but not implemented!");
+        }
+
+        if(viewUpdated) view.repaint();
+
+        informAgsEnvironmentChanged();
         return true; // the action was executed with success
     }
 
@@ -37,5 +45,9 @@ public class HouseEnv extends Environment {
     @Override
     public void stop() {
         super.stop();
+    }
+
+    public void createPercept(String literal){
+        addPercept(Literal.parseLiteral(literal));
     }
 }

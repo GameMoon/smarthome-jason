@@ -9,4 +9,9 @@ public abstract class Object{
     int posY;
     
     abstract void draw(Graphics g);
+
+    public boolean contains(int x,int y){
+        if( x >= posX && x <=posX+width && y >=posY && y<=posY+height) return true;
+        return false;
+    }
 }   
