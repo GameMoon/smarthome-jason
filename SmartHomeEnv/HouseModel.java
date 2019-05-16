@@ -56,10 +56,9 @@ public class HouseModel{
         houseEnv.createPercept("entered("+human.getType()+","+room.getName()+")");
        
     }
-    public void escape(){
-        for(Human human : humans){
-            human.escape();
-        }
+    public void escape(String humanType){
+        if(humanType == "guest") human.get(1).escape();
+        if(humanType == "owner") human.get(0).escape();
     }
     public void leaveRoom(Room room, Human human) {
         

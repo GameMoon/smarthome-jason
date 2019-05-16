@@ -41,7 +41,7 @@ public class HouseEnv extends Environment {
             model.getRoom(action.getTerm(0).toString()).extinguish(false);
         }
         else if(action.getFunctor().equals("run")){
-            model.escape();
+            model.escape(action.getTerm(0).toString());
         }
         else{
             viewUpdated = false;
