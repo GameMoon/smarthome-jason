@@ -37,6 +37,9 @@ public class HouseEnv extends Environment {
         else if(action.getFunctor().equals("extinguish")){
             model.getRoom(action.getTerm(0).toString()).extinguish(true);
         }
+        else if(action.getFunctor().equals("extinguishOff")){
+            model.getRoom(action.getTerm(0).toString()).extinguish(false);
+        }
         else{
             viewUpdated = false;
             logger.info("executing: " + action + ", but not implemented!");
