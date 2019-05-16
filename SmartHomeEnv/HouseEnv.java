@@ -51,4 +51,8 @@ public class HouseEnv extends Environment {
         System.out.println("new percept: "+literal);
         addPercept(Literal.parseLiteral(literal));
     }
+    public void deletePercept(String literal){
+        System.out.println("new percept: "+literal);
+        removePercept(Literal.parseLiteral(literal));
+    }
 }

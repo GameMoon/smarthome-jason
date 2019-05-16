@@ -55,6 +55,7 @@ public class HouseModel{
     
     public void leaveRoom(Room room, Human human) {
         houseEnv.createPercept("left(" + human.getType() +","+room.getName()+")");
+        houseEnv.deletePercept("entered(" + human.getType() +","+room.getName()+")");
     }
     public Room selectRoom(String name){
         selectedRoom = getRoom(name);
