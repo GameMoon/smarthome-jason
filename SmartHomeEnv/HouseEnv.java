@@ -17,14 +17,10 @@ public class HouseEnv extends Environment {
         super.init(args);
         model = new HouseModel(this);
         view = new HouseView(model);
-        //  getEnvironmentInfraTier().getRuntimeServices()
-        // .createAgent(
-        //  "anotherAg",     // agent name
-        //  "node.asl",       // AgentSpeak source
-        //  null,            // default agent class
-        //  null,            // default architecture class
-        //  null,            // default belief base parameters
-        //  null);
+
+        for(String roomName : model.getRoomNames()){
+            createPerceptAgent("thisPlace("+roomName+")",roomName);
+        }
     }
 
     @Override
@@ -55,10 +51,15 @@ public class HouseEnv extends Environment {
         super.stop();
     }
 
+    public void createPerceptAgent(String literal,String agent){
+        addPercept(agent, Literal.parseLiteral(literal));
+    }
+
     public void createPercept(String literal){
         System.out.println("new percept: "+literal);
         addPercept(Literal.parseLiteral(literal));
     }
+
     public void deletePercept(String literal){
         System.out.println("delete percept: "+literal);
         removePercept(Literal.parseLiteral(literal));

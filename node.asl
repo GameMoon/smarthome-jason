@@ -5,8 +5,6 @@
 /* Initial beliefs and rules */
 
 
-thisPlace(kitchen).
-
 /* Initial goals */
 
 
