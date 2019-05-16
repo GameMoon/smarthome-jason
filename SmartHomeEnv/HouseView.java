@@ -3,6 +3,7 @@ package SmartHomeEnv;
 import javax.swing.*;
 import java.awt.Graphics;
 import java.util.List;
+import java.awt.Dimension;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 
@@ -21,7 +22,20 @@ public class HouseView extends JPanel implements MouseListener {
         window.addMouseListener( (MouseListener) this);
         this.model = model;
 
-        window.add(this);
+
+        JPanel panel = new JPanel();
+        JCheckBox temp = new JCheckBox("High Temp", true);
+        JCheckBox smoke = new JCheckBox("Smoke", true);
+        panel.add(temp);
+        panel.add(smoke);
+
+        JPanel container = new JPanel();
+        container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));
+        this.setPreferredSize(new Dimension(400,400));
+        container.add(this);
+        container.add(panel);
+
+        window.add(container);
         window.setVisible(true);
     }
 

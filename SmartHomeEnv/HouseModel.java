@@ -64,9 +64,9 @@ public class HouseModel{
             selectedHuman.move(x, y);
             Room newRoom = findRoomByPos(selectedHuman.getX(), selectedHuman.getY());
 
-            if (currentRoom != null)
+            if (currentRoom != newRoom && currentRoom != null)
                 leaveRoom(currentRoom, selectedHuman);
-            if (newRoom != null)
+            if (currentRoom != newRoom && newRoom != null)
                 enterRoom(newRoom, selectedHuman);
 
             selectedHuman = null;
