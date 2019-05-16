@@ -19,5 +19,11 @@ MAS smarthome {
     agents:
         owner;
 
+        guest;
+
+        server;
+
+        node;
+
 }
 
