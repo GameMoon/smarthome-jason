@@ -30,8 +30,10 @@ public class Room extends Object{
             g.fillRect(posX, posY, width, height);
         }
 
-        if (extinguish)
+        if (extinguish){
             g.setColor(Color.red);
+            g.fillRect(posX, posY, width, height);
+        }
 
         g.setColor(Color.black);
         g.drawRect(posX, posY, width, height);
