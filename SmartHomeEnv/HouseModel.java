@@ -57,8 +57,8 @@ public class HouseModel{
        
     }
     public void escape(String humanType){
-        if(humanType == "guest") human.get(1).escape();
-        if(humanType == "owner") human.get(0).escape();
+        if(humanType == "guest") humans.get(1).escape();
+        if(humanType == "owner") humans.get(0).escape();
     }
     public void leaveRoom(Room room, Human human) {
         
