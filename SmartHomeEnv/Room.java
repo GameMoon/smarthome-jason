@@ -31,7 +31,7 @@ public class Room extends Object{
         }
 
         if (extinguish){
-            g.setColor(Color.red);
+            g.setColor(Color.blue);
             g.fillRect(posX, posY, width, height);
         }
 

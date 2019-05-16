@@ -52,11 +52,15 @@ public class HouseModel{
     }
     
     public void enterRoom(Room room,Human human){
-         houseEnv.deletePercept("left("+human.getType()+","+ room.getName()+")");
+        houseEnv.deletePercept("left("+human.getType()+","+ room.getName()+")");
         houseEnv.createPercept("entered("+human.getType()+","+room.getName()+")");
        
     }
-    
+    public void escape(){
+        for(Human human : humans){
+            human.escape();
+        }
+    }
     public void leaveRoom(Room room, Human human) {
         
         houseEnv.createPercept("left(" + human.getType() +","+room.getName()+")");
