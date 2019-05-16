@@ -35,10 +35,14 @@ public class HouseEnv extends Environment {
             model.getRoom(action.getTerm(0).toString()).setLight(false);
         }
         else if(action.getFunctor().equals("extinguish")){
-            model.getRoom(action.getTerm(0).toString()).extinguish(true);
+            Room room = model.getRoom(action.getTerm(0).toString());
+            room.extinguish(true);
+            model.escapeAll(room);
         }
         else if(action.getFunctor().equals("extinguishOff")){
-            model.getRoom(action.getTerm(0).toString()).extinguish(false);
+            Room room = model.getRoom(action.getTerm(0).toString());
+            room.extinguish(false);
+            model.escapeAll(room);
         }
         else if(action.getFunctor().equals("run")){
             model.escape(action.getTerm(0).toString());

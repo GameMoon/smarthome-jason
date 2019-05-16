@@ -61,6 +61,12 @@ public class HouseModel{
         if(humanType.equals("guest")) humans.get(1).escape();
         if(humanType.equals("owner")) humans.get(0).escape();
     }
+    public void escapeAll(Room room){
+        for(Human human : humans){
+            houseEnv.deletePercept("entered(" + human.getType() + "," + room.getName() + ")");
+            houseEnv.deletePercept("left(" + human.getType() + "," + room.getName() + ")");
+        }
+    }
     public void leaveRoom(Room room, Human human) {
         
         houseEnv.createPercept("left(" + human.getType() +","+room.getName()+")");
