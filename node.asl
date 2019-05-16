@@ -44,7 +44,7 @@
 +highTemp(WHERE): thisPlace(WHERE) & highSmoke(WHERE) <- -lowTemp(WHERE);
 														.print("Temp and smoke are high in ",WHERE,". Fire detected");
 														.send(server,tell,highTemp);
-														.extinguish(WHERE).
+														extinguish(WHERE).
 														
 +highTemp(WHERE): thisPlace(WHERE) & not highSmoke(WHERE) <- -lowTemp(WHERE);
 														.print("Temp is high in ",WHERE,".");
@@ -52,13 +52,15 @@
 														
 +lowTemp(WHERE): thisPlace(WHERE)<- -highTemp(WHERE);
 									.print("Temp is low in ",WHERE,".");
-									.send(server,tell,lowTemp).
+									.send(server,tell,lowTemp);
+									extinguishOff(WHERE).
 
 //smoke
 +highSmoke(WHERE): thisPlace(WHERE) & highTemp(WHERE) <- -lowSmoke(WHERE);
 														.print("Temp and smoke are high in ",WHERE,". Fire detected");
 														.send(server,tell,highSmoke);
-														.extinguish(WHERE).
+														.send(server,tell,fireAt(WHERE));
+														extinguish(WHERE).
 														
 +highSmoke(WHERE): thisPlace(WHERE) & not highTemp(WHERE) <- -lowSmoke(WHERE);
 														.print("Smoke is high in ",WHERE,".");
@@ -67,4 +69,17 @@
 +lowSmoke(WHERE): thisPlace(WHERE) <- -highSmoke(WHERE);
 										.print("Smoke is low in ",WHERE,".");
 										.send(server,tell,lowSmoke);
+										extinguishOff(WHERE).
 										
++extinguish[source(server)] <- ?thisPlace(WHERE);
+							   -extinguishOff[source(server)];
+							   -entered(guest);
+							   -entered(owner);
+							   -left(guest);
+							   -left(owner);
+							   lightsOff(WHERE);
+							   extinguish(WHERE).
+							   
++extinguishOff[source(server)] <- ?thisPlace(WHERE);
+							   -extinguish[source(server)]
+							   extinguishOff(WHERE).
