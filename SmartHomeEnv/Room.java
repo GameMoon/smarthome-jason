@@ -55,6 +55,9 @@ public class Room extends Object{
     public void setLight(boolean state){
         light = state;
     }
+    public void extinguish(boolean state){
+        extinguish = state;
+    }
 
     public boolean getLight(){
         return light;

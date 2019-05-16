@@ -34,6 +34,9 @@ public class HouseEnv extends Environment {
         else if(action.getFunctor().equals("lightsOff")){
             model.getRoom(action.getTerm(0).toString()).setLight(false);
         }
+        else if(action.getFunctor().equals("extinguish")){
+            model.getRoom(action.getTerm(0).toString()).extinguish(true);
+        }
         else{
             viewUpdated = false;
             logger.info("executing: " + action + ", but not implemented!");
@@ -52,6 +55,7 @@ public class HouseEnv extends Environment {
     }
 
     public void createPerceptAgent(String literal,String agent){
+        System.out.println("new percept agent: " + literal +" | "+ agent);
         addPercept(agent, Literal.parseLiteral(literal));
     }
 
@@ -63,5 +67,9 @@ public class HouseEnv extends Environment {
     public void deletePercept(String literal){
         System.out.println("delete percept: "+literal);
         removePercept(Literal.parseLiteral(literal));
+    }
+    public void deletePerceptAgent(String literal,String agent){
+        System.out.println("delete percept agent: " + literal+ " | "+ agent);
+        removePercept(agent,Literal.parseLiteral(literal));
     }
 }

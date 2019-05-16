@@ -27,6 +27,8 @@ public class HouseModel{
         addRoom(new Room("bedroom",190,170,150,100));
         addHuman(new Owner(20, 320));
         addHuman(new Guest(40, 320));
+
+        selectedRoom = rooms.get(0);
            
     }
     public void addRoom(Room room){
@@ -69,11 +71,28 @@ public class HouseModel{
         if(selectedRoom == null) return;
         selectedRoom.setTemperature(state);
         System.out.println("Room: " + selectedRoom.getName() + " HighTemp:" + state);
+
+        if(state){
+            houseEnv.createPerceptAgent("highTemp(" + selectedRoom.getName() + ")", selectedRoom.getName());
+            houseEnv.deletePerceptAgent("lowTemp(" + selectedRoom.getName() + ")", selectedRoom.getName());
+        }
+        else{
+            houseEnv.deletePerceptAgent("highTemp(" + selectedRoom.getName() + ")", selectedRoom.getName());
+            houseEnv.createPerceptAgent("lowTemp(" + selectedRoom.getName() + ")", selectedRoom.getName());
+        }
     }
     public void setSmoke(boolean state){
         if(selectedRoom == null) return;
         selectedRoom.setSmoke(state);
         System.out.println("Room: "+selectedRoom.getName()+ " Smoke:"+state);
+
+        if (state) {
+            houseEnv.createPerceptAgent("highSmoke(" + selectedRoom.getName() + ")", selectedRoom.getName());
+            houseEnv.deletePerceptAgent("lowSmoke(" + selectedRoom.getName() + ")", selectedRoom.getName());
+        } else {
+            houseEnv.deletePerceptAgent("highSmoke(" + selectedRoom.getName() + ")", selectedRoom.getName());
+            houseEnv.createPerceptAgent("lowSmoke(" + selectedRoom.getName() + ")", selectedRoom.getName());
+        }
     }
 
     public void selectHuman(int x, int y){
