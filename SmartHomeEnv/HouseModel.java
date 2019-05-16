@@ -57,6 +57,7 @@ public class HouseModel{
        
     }
     public void escape(String humanType){
+        System.out.println("escape |" + humanType);
         if(humanType == "guest") humans.get(1).escape();
         if(humanType == "owner") humans.get(0).escape();
     }
