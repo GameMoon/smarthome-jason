@@ -25,7 +25,7 @@ thisPlace(kitchen).
 +entered(HUMAN,WHERE): thisPlace(WHERE) <- -left(HUMAN,WHERE);
 											.print(HUMAN," entered ",WHERE);
 											lightsOn(WHERE).
-											
+
 +left(HUMAN,WHERE): thisPlace(WHERE) <- -entered(HUMAN,WHERE);
 										  lightsOff(WHERE).
 

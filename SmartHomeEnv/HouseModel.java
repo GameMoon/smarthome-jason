@@ -24,7 +24,7 @@ public class HouseModel{
         addRoom(new Room("bathroom", 20, 190, 100, 80));
         addRoom(new Room("hall",120,20,70,250));
         addRoom(new Room("livingroom",190,20,150,150));
-        addRoom(new Room("sleepingroom",190,170,150,100));
+        addRoom(new Room("bedroom",190,170,150,100));
         addHuman(new Owner(20, 320));
         addHuman(new Guest(40, 320));
            
@@ -50,10 +50,13 @@ public class HouseModel{
     }
     
     public void enterRoom(Room room,Human human){
+         houseEnv.deletePercept("left("+human.getType()+","+ room.getName()+")");
         houseEnv.createPercept("entered("+human.getType()+","+room.getName()+")");
+       
     }
     
     public void leaveRoom(Room room, Human human) {
+        
         houseEnv.createPercept("left(" + human.getType() +","+room.getName()+")");
         houseEnv.deletePercept("entered(" + human.getType() +","+room.getName()+")");
     }
@@ -84,7 +87,7 @@ public class HouseModel{
             if (currentRoom != newRoom && currentRoom != null)
                 leaveRoom(currentRoom, selectedHuman);
             if (currentRoom != newRoom && newRoom != null)
-                enterRoom(newRoom, selectedHuman);
+                enterRoom(newRoom,selectedHuman);
 
             selectedHuman = null;
             return;
