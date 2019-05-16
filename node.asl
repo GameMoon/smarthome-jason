@@ -1,7 +1,7 @@
 // Agent node in project smarthome.mas2j
 
 /* Initial beliefs and rules */
-thisPlace(kitchen)
+thisPlace(kitchen).
 
 /* Initial goals */
 
