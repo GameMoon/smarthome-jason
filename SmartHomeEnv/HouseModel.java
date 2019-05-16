@@ -13,6 +13,7 @@ public class HouseModel{
     private List<Human> humans = new ArrayList();
     
     private Human selectedHuman = null;
+    private Room selectedRoom = null;
 
     private HouseEnv houseEnv;
 
@@ -55,6 +56,21 @@ public class HouseModel{
     public void leaveRoom(Room room, Human human) {
         houseEnv.createPercept("left(" + human.getType() +","+room.getName()+")");
     }
+    public Room selectRoom(String name){
+        selectedRoom = getRoom(name);
+        return selectedRoom;
+    }
+
+    public void setHighTemp(boolean state){
+        if(selectedRoom == null) return;
+        selectedRoom.setTemperature(state);
+        System.out.println("Room: " + selectedRoom.getName() + " HighTemp:" + state);
+    }
+    public void setSmoke(boolean state){
+        if(selectedRoom == null) return;
+        selectedRoom.setSmoke(state);
+        System.out.println("Room: "+selectedRoom.getName()+ " Smoke:"+state);
+    }
 
     public void selectHuman(int x, int y){
         System.out.println("X: "+x+" Y:"+y);
@@ -92,5 +108,11 @@ public class HouseModel{
         }
         return null;
     }
-  
+    public String[] getRoomNames(){
+        List<String> names = new ArrayList<String>();
+        for(Room room : rooms){
+            names.add(room.getName());
+        }
+        return names.toArray(new String[0]);
+    }
 }
