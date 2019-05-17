@@ -19,7 +19,7 @@ highSmokeNo(0).
 
 
 
-+!start : true <- .print("hello world.").
++!start : true <- .print("hello server.").
 
 
 +highSmoke[source(WHERE)] <- +highSmoke(WHERE);

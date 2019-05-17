@@ -17,7 +17,7 @@
 
 
 
-+!start : true <- .print("hello world.").
++!start : true <- .print("hello ",WHERE).
 
 //lights
 +entered(HUMAN,WHERE): thisPlace(WHERE) <- -left(HUMAN,WHERE);
